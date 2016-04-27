@@ -20,10 +20,13 @@ import json
 from flask import make_response
 import requests
 
-UPLOAD_FOLDER = os.path.realpath('.') + '/images/'
+UPLOAD_FOLDER = os.path.join(WORKING_DIR, '/images/')
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
+WORKING_DIR = os.path.dirname(__file__)
+PATH_TO_SECRETS_FILE = os.path.join(WORKING_DIR, 'client_secrets.json')
 CLIENT_ID = json.loads(
-    open('client_secrets.json', 'r').read())['web']['client_id']
+    open(PATH_TO_SECRETS_FILE, 'r').read())['web']['client_id']
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -67,7 +70,7 @@ def gconnect():
 
     # Attempt to upgrade the authorization code into a credentials object
     try:
-        oauth_flow = flow_from_clientsecrets('client_secrets.json', scope='')
+        oauth_flow = flow_from_clientsecrets(PATH_TO_SECRETS_FILE, scope='')
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
@@ -481,7 +484,8 @@ def new_species(category_id):
         image=request.files['image']
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
-            image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            filepath = os.path.join('/var/www/CatalogApp/CatalogApp/images', filename)
+            image.save(os.path.join(filepath)
         caption = request.form['caption'] if request.form['caption'] else ""
         newSpecies = Species(name=request.form['name'],
                              scientific_name=request.form['scientific_name'],

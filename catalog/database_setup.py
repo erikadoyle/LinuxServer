@@ -71,6 +71,6 @@ class Species(Base):
             'id': self.id
         }
 
-engine = create_engine('sqlite:///plantnursery.db')
+engine = create_engine('postgresql+psycopg2://catalog:catalog@localhost/catalog')
 
 Base.metadata.create_all(engine)
