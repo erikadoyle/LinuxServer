@@ -298,7 +298,8 @@ def new_category():
         image=request.files['image']
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
-            image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            filepath = os.path.join('/var/www/CatalogApp/CatalogApp/images', filename)
+            image.save(filepath)
         newCategory = Category(
             name=request.form['name'],
             user_id=login_session['user_id'],
