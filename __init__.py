@@ -20,11 +20,8 @@ import json
 from flask import make_response
 import requests
 
-# TODO: Debug why dirname and abspath arn't working in certain situations
-FILE_PATH = os.path.join('/var/www/CatalogApp/CatalogApp/images', filename)
-
 WORKING_DIR = os.path.dirname(__file__)
-UPLOAD_FOLDER = os.path.join(WORKING_DIR, '/images/')
+UPLOAD_FOLDER = '/var/www/CatalogApp/CatalogApp/images'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 PATH_TO_SECRETS_FILE = os.path.join(WORKING_DIR, 'client_secrets.json')
@@ -301,7 +298,7 @@ def new_category():
         image=request.files['image']
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
-            image.save(os.path.join(FILE_PATH, filename))
+            image.save(os.path.join(UPLOAD_FOLDER, filename))
         newCategory = Category(
             name=request.form['name'],
             user_id=login_session['user_id'],
@@ -349,7 +346,7 @@ def edit_category(category_id):
             image=request.files['image']
             if allowed_file(image.filename):
                 filename = secure_filename(image.filename)
-                image.save(os.path.join(FILE_PATH, filename))
+                image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 editedCategory.image = filename
         flash('Edited category: %s' % editedCategory.name)
         return redirect(url_for('show_species', category_id=category_id))
@@ -387,7 +384,7 @@ def delete_category(category_id):
     # Handle POST and GET requests
     if request.method == 'POST':
         # Delete the image and category
-        os.remove(os.path.join(FILE_PATH, categoryToDelete.image))
+        os.remove(os.path.join(app.config['UPLOAD_FOLDER'], categoryToDelete.image))
         session.delete(categoryToDelete)
         # Delete its associated species
         speciesToDelete = session.query(Species).filter_by(
@@ -487,7 +484,7 @@ def new_species(category_id):
         image=request.files['image']
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
-            image.save(os.path.join(FILE_PATH, filename))
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         caption = request.form['caption'] if request.form['caption'] else ""
         newSpecies = Species(name=request.form['name'],
                              scientific_name=request.form['scientific_name'],
@@ -543,7 +540,7 @@ def edit_species(category_id, species_id):
             image=request.files['image']
             if allowed_file(image.filename):
                 filename = secure_filename(image.filename)
-                image.save(os.path.join(FILE_PATH, filename))
+                image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 editedItem.image = filename
         if request.form['caption']:
             editedItem.caption = request.form['caption']
