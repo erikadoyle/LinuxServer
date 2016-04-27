@@ -485,7 +485,7 @@ def new_species(category_id):
         if image and allowed_file(image.filename):
             filename = secure_filename(image.filename)
             filepath = os.path.join('/var/www/CatalogApp/CatalogApp/images', filename)
-            image.save(os.path.join(filepath)
+            image.save(filepath)
         caption = request.form['caption'] if request.form['caption'] else ""
         newSpecies = Species(name=request.form['name'],
                              scientific_name=request.form['scientific_name'],
