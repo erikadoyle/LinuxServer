@@ -20,10 +20,10 @@ import json
 from flask import make_response
 import requests
 
+WORKING_DIR = os.path.dirname(__file__)
 UPLOAD_FOLDER = os.path.join(WORKING_DIR, '/images/')
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
-WORKING_DIR = os.path.dirname(__file__)
 PATH_TO_SECRETS_FILE = os.path.join(WORKING_DIR, 'client_secrets.json')
 CLIENT_ID = json.loads(
     open(PATH_TO_SECRETS_FILE, 'r').read())['web']['client_id']
