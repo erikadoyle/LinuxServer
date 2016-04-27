@@ -26,7 +26,7 @@ class Category(Base):
     """
     __tablename__ = 'category'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, Sequence(), primary_key=True)
     name = Column(String(250), nullable=False)
     image = Column(String(255))
     user_id = Column(Integer, ForeignKey('user.id'))
