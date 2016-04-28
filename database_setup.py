@@ -29,7 +29,6 @@ class Category(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
     image = Column(String(255))
-    user_id = Column(Integer, ForeignKey('user.id', onupdate="CASCADE", ondelete="CASCADE"))
     user = relationship(User)
 
     @property
@@ -53,9 +52,7 @@ class Species(Base):
     description = Column(String(250))
     image = Column(String(255))
     caption = Column(String(30))
-    category_id = Column(Integer, ForeignKey('category.id', onupdate="CASCADE", ondelete="CASCADE"))
     category = relationship(Category)
-    user_id = Column(Integer, ForeignKey('user.id', onupdate="CASCADE", ondelete="CASCADE"))
     user = relationship(User)
 
 

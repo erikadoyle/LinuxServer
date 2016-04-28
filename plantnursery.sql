@@ -12,6 +12,7 @@ CREATE TABLE "category" (
 	image VARCHAR(255),
 	user_id INTEGER references "user" (id)
 );
+ALTER TABLE "category" DROP CONSTRAINT category_user_id_fkey;
 INSERT INTO "category" (name, image, user_id) VALUES('Trees','Pseudotsugamenziesii.jpg',1);
 INSERT INTO "category" (name, image, user_id) VALUES('Shrubs','Cornussericea.jpg',1);
 INSERT INTO "category" (name, image, user_id) VALUES('Groundcover','Iristenax.jpg',1);
@@ -29,6 +30,8 @@ CREATE TABLE species (
 	category_id INTEGER REFERENCES "category" (id),
 	user_id INTEGER REFERENCES "user" (id)
 );
+ALTER TABLE "species" DROP CONSTRAINT species_category_id_fkey;
+ALTER TABLE "species" DROP CONSTRAINT  species_user_id_fkey;
 INSERT INTO "species" (name, scientific_name, moisture_reqs, exposure_reqs, description, image, caption, category_id, user_id) VALUES('Douglas-fir','Pseudotsuga menziesii','dry-moist','sun - part shade','The Douglas fir is host to many native species of insect and bird.  Fast growing and predictable, it can be grown in almost any native soil but will sometimes blow down if planted in shallow soils over compacted clay or glacial till.','Pseudotsugamenziesii.jpg','(c) Greg Rabourn',1,1);
 INSERT INTO "species" (name, scientific_name, moisture_reqs, exposure_reqs, description, image, caption, category_id, user_id) VALUES('Western redcedar','Thuja plicata','moist - wet','part shade - shade','This is a grand and long lived tree, achieving both height and breadth through 200-300 years. Ideal for lowland and dampish areas, it does better on more level surfaces. ','Thujaplicata.jpg','(c) Greg Rabourn',1,1);
 INSERT INTO "species" (name, scientific_name, moisture_reqs, exposure_reqs, description, image, caption, category_id, user_id) VALUES('paper birch','Betula papyrifera','moist','sun - part shade','Paper birch is known for its white, peeling, paper-like bark that is found in mature specimens. The bark is dark in young trees. It has a smaller, more delicate appearing leaf than alder and can look nice planted in groves.','Betulapapyrifera.jpg','(c) Greg Rabourn',1,1);
