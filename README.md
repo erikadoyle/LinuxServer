@@ -9,7 +9,7 @@ Web Developer Nanodegree program.
 - SSH port: 2200
 
 ## Server Configuration
-I modified the baseline Ubuntu server with the following configuration:
+I modified the baseline Ubuntu server with the following configuration.
 
 ### General updates
  - Updated all currently installed packages
@@ -52,3 +52,18 @@ I modified the baseline Ubuntu server with the following configuration:
 - Granted usage on all sequences to catalog (for auto-generating serial primary keys)
 
 ## Resources
+The following resources were used in project.
+- Udacity Course: [Configuring Linux Web Servers](https://www.udacity.com/course/configuring-linux-web-servers--ud299)
+- Udacity Forums: 
+ - [Target WSGI script cannot be loaded. No such file](https://discussions.udacity.com/t/target-wsgi-script-cannot-be-loaded-no-such-file/44819) 
+  - FSND alumni P5 resource lists:
+   - [Markedly underwhelming and potentially wrong resource list for P5](https://discussions.udacity.com/t/markedly-underwhelming-and-potentially-wrong-resource-list-for-p5/8587)
+   - [Project 5 Resources](https://discussions.udacity.com/t/project-5-resources/28343)
+   - [P5 How I got through it](https://discussions.udacity.com/t/p5-how-i-got-through-it/15342/17)
+- Digital Ocean Tutorials:
+  - [How To Install and Use PostgreSQL on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04)
+  - [How To Deploy a Flask Application on an Ubuntu VPS](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
+- Stack Overflow:
+  - [Convert SQLITE SQL dump file to POSTGRESQL](http://stackoverflow.com/questions/4581727/convert-sqlite-sql-dump-file-to-postgresql)
+  - [import sql dump into postgresql database](http://stackoverflow.com/questions/6842393/import-sql-dump-into-postgresql-database)
+  - [Delete rows with foreign key in PostgreSQL Flask](http://stackoverflow.com/questions/28514025/delete-rows-with-foreign-key-in-postgresql-flask)
