@@ -13,6 +13,7 @@ I modified the baseline Ubuntu server with the following configuration:
 
 ### General updates
  - Updated all currently installed packages
+ - Installed python-pip
  - Configured local timezone to UTC
  - Installed and configured Ubuntu time synchronization
   - Installed NTP
@@ -29,9 +30,18 @@ I modified the baseline Ubuntu server with the following configuration:
   - To allow all outgoing connections
 
 ### Web application functionality
- - Installed Apache
+- Installed Apache
   - Installed and enabled a web application handler (libapache2-mod-wsgi python-dev)
  - Installed git and cloned the https://github.com/erikadoyle/LinuxServer repository (with web application + database code)
+ - Installed catalog app dependencies:
+  - werkzeug==0.8.3
+  - flask==0.9
+  - Flask-Login==0.1.3
+  - oauth2client
+  - psycopg2
+  - virtualenv
+- Created a directory for the catalog Flask app (/var/www/CatalogApp/CatalogApp)
+- Configured and enabled a new virtual host for the catalog app
 
 ### Database functionality
 - Installed PostgreSQL
@@ -39,6 +49,6 @@ I modified the baseline Ubuntu server with the following configuration:
 - Created a new user "catalog" with limited permission to the catalog database (read, write, update tables only) 
 - Created a new database "catalog" and seeded it with starter data
 - Granted all permissions on catalog db tables to user "catalog"
-- Granted usage on all sequences to catalog
+- Granted usage on all sequences to catalog (for auto-generating serial primary keys)
 
 ## Resources
