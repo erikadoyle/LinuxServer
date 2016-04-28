@@ -55,7 +55,8 @@ I modified the baseline Ubuntu server with the following configuration.
 The following resources were used in project.
 - Udacity Course: [Configuring Linux Web Servers](https://www.udacity.com/course/configuring-linux-web-servers--ud299)
 - Udacity Forums: 
- - [Target WSGI script cannot be loaded. No such file](https://discussions.udacity.com/t/target-wsgi-script-cannot-be-loaded-no-such-file/44819) 
+ - [Target WSGI script cannot be loaded. No such file](https://discussions.udacity.com/t/target-wsgi-script-cannot-be-loaded-no-such-file/44819)
+ - [Application shows with my public IP address but not with my Amazon EC2 instance public URL](https://discussions.udacity.com/t/application-shows-with-my-public-ip-address-but-not-with-my-amazon-ec2-instance-public-url/37117/1)
   - FSND alumni P5 resource lists:
    - [Markedly underwhelming and potentially wrong resource list for P5](https://discussions.udacity.com/t/markedly-underwhelming-and-potentially-wrong-resource-list-for-p5/8587)
    - [Project 5 Resources](https://discussions.udacity.com/t/project-5-resources/28343)
